@@ -2,14 +2,10 @@ package com.dark;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.redisson.api.RBucket;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
 import org.redisson.config.SentinelServersConfig;
-import org.redisson.config.SingleServerConfig;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Administrator on 2017/4/26.
@@ -29,7 +25,7 @@ public class RedissonTest {
         sentinelServersConfig.addSentinelAddress("10.8.48.234:26379","10.8.48.234:26380","10.8.48.234:26381");
         sentinelServersConfig.setMasterName("tomcat-dev");
         sentinelServersConfig.setDatabase(2);
-        redissonClient = RedisUtils.getInstance().getRedisson(config);
+        redissonClient = RedissionUtils.getInstance().getRedisson(config);
     }
 
 
@@ -41,8 +37,8 @@ public class RedissonTest {
 //        singleSerververConfig.setAddress("127.0.0.1:6379");
 //        singleSerververConfig.setPassword("redis");
 //
-//        RedissonClient redissonClient = RedisUtils.getInstance().getRedisson(config);
-//        RBucket<Object> rBucket = RedisUtils.getInstance().getRBucket(redissonClient, "key");
+//        RedissonClient redissonClient = RedissionUtils.getInstance().getRedisson(config);
+//        RBucket<Object> rBucket = RedissionUtils.getInstance().getRBucket(redissonClient, "key");
 //        //rBucket.set("wangnian");
 //        System.out.println(rBucket.get());
 //
@@ -63,9 +59,10 @@ public class RedissonTest {
             //获取锁
             lock.lock();
             //执行业务逻辑
-            System.out.println("-------------------执行业务逻辑代码-------------------");
+
             System.out.println("当前执行线程名称是："+Thread.currentThread().getName());
-            Thread.sleep(20000);
+            System.out.println("-------------------执行业务逻辑代码-------------------");
+            Thread.sleep(2000);
             System.out.println("-------------------业务逻辑代码执行结束-------------------");
         }finally {
             lock.unlock();

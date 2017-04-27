@@ -8,27 +8,27 @@ import org.slf4j.LoggerFactory;
 /***
  * Redis client的辅助工具类
  * 用于连接Redis服务器 创建不同的Redis Server对应的客户端对象
- * @author wangnian
- * 博客地址：http://my.oschina.net/wangnian
+ * 使用redission 来实现对redis操作
+ *
  */
-public class RedisUtils {
+public class RedissionUtils {
 
-    private static   Logger logger= LoggerFactory.getLogger(RedisUtils.class);
+    private static   Logger logger= LoggerFactory.getLogger(RedissionUtils.class);
 
-    private static RedisUtils redisUtils;
+    private static RedissionUtils redissionUtils;
 
-    private RedisUtils(){}
+    private RedissionUtils(){}
 
     /**
      * 提供单例模式
      * @return
      */
-    public synchronized static RedisUtils getInstance(){
-        if(redisUtils==null)
-            synchronized (RedisUtils.class) {
-                if(redisUtils==null) redisUtils=new RedisUtils();
+    public synchronized static RedissionUtils getInstance(){
+        if(redissionUtils ==null)
+            synchronized (RedissionUtils.class) {
+                if(redissionUtils ==null) redissionUtils =new RedissionUtils();
             }
-        return redisUtils;
+        return redissionUtils;
     }
 
 
