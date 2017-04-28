@@ -3,9 +3,6 @@ package com.dark.json;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.concurrent.TimeUnit;
 
 /**
