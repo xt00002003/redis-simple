@@ -1,5 +1,7 @@
 package com.dark.domain;
 
+import java.io.Serializable;
+
 /**
  * redis-simple
  * User: dark xue
@@ -7,7 +9,7 @@ package com.dark.domain;
  * Time: 15:20
  * description:
  */
-public class UserInfo {
+public class UserInfo implements Serializable {
     private String userName;
     private String password;
 
