@@ -1,4 +1,4 @@
-package com.dark;
+package com.dark.lock;
 import org.redisson.Redisson;
 
 import org.redisson.api.*;

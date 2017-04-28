@@ -74,7 +74,6 @@
             <bean
                     class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
         </property>
-
     </bean>
     <!-- 对string操作的封装 -->
     <bean id="stringRedisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate"

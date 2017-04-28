@@ -1,13 +1,10 @@
 package com.dark;
 
+import com.dark.lock.RedisLock;
 import org.junit.Before;
 import org.junit.Test;
-import org.redisson.api.RLock;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
-
-import java.util.Random;
 
 /**
  * Created by Administrator on 2017/4/26.
