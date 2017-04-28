@@ -43,7 +43,7 @@ public class RedisListUtil {
      * @return
      */
     public void cacheList(String key, String value) {
-        cacheList(key, value, -1);
+        cacheList(key, value, -1L);
     }
 
     /**
