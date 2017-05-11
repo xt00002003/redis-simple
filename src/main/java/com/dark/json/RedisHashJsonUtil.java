@@ -20,7 +20,6 @@ public class RedisHashJsonUtil<T> {
 
     public RedisHashJsonUtil(RedisTemplate redisTemplate,Class<T> clazz) {
         this.redisTemplate = redisTemplate;
-        //获取泛型的Class类型
         redisTemplate.setHashValueSerializer(new Jackson2JsonRedisSerializer<T>(clazz));
     }
 

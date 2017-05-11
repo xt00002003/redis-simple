@@ -1,4 +1,4 @@
-package com.dark;
+package com.dark.lock;
 
 import com.dark.lock.RedisLock;
 import org.junit.Before;

@@ -16,7 +16,6 @@ public class RedisKeyValueJsonUtil<T> {
 
     public RedisKeyValueJsonUtil(RedisTemplate redisTemplate,Class<T> clazz) {
         this.redisTemplate = redisTemplate;
-        //获取泛型的Class类型
         redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<T>(clazz));
     }
 

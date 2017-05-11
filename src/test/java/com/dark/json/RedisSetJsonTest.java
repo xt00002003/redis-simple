@@ -1,7 +1,6 @@
-package com.dark;
+package com.dark.json;
 
 import com.dark.domain.UserInfo;
-import com.dark.json.RedisHashJsonUtil;
 import com.dark.string.RedisHashUtil;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +8,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * redis-simple
@@ -18,18 +19,17 @@ import java.util.Map;
  * Time: 16:17
  * description:
  */
-public class RedisHashJsonTest {
+public class RedisSetJsonTest {
 
     private RedisTemplate redisTemplate;
 
-    private RedisHashJsonUtil redisHashJsonUtil;
-
+    private RedisSetJsonUtil<UserInfo> redisSetJsonUtil;
 
     @Before
     public void init() throws Exception{
         ClassPathXmlApplicationContext applicationContext=new ClassPathXmlApplicationContext("classpath:spring-context.xml");
         redisTemplate=(RedisTemplate)applicationContext.getBean("redisTemplate");
-        redisHashJsonUtil=new RedisHashJsonUtil(redisTemplate, UserInfo.class);
+        redisSetJsonUtil=new RedisSetJsonUtil<UserInfo>(redisTemplate,UserInfo.class);
     }
 
     @Test
@@ -40,22 +40,21 @@ public class RedisHashJsonTest {
         UserInfo userInfo2=new UserInfo();
         userInfo2.setPassword("456");
         userInfo2.setUserName("test2");
-        Map<String,UserInfo> map=new HashMap<String, UserInfo>();
-        map.put("test1",userInfo);
-        map.put("test2",userInfo2);
-        redisHashJsonUtil.cacheHashMap("hashTest2",map);
+        Set<UserInfo> set=new HashSet<UserInfo>();
+        set.add(userInfo);
+        set.add(userInfo2);
+        redisSetJsonUtil.cacheSet("testSetJson",set);
     }
     @Test
     public void getHashEntities(){
-        String hashKey="hashTest2";
-        Map<String,UserInfo> result=redisHashJsonUtil.getEntity(hashKey);
+        String key="testSetJson";
+        Set<UserInfo> result=redisSetJsonUtil.getSet(key);
         System.out.println(result);
     }
 
     @Test
     public void deleteEntity(){
-        String hashKey="hashTest2";
-        String key="test1";
-        redisHashJsonUtil.deleteEntity(hashKey,key);
+        String key="testSetJson";
+        redisSetJsonUtil.delMemberFromSet(key);
     }
 }

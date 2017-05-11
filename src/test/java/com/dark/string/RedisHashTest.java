@@ -1,4 +1,4 @@
-package com.dark;
+package com.dark.string;
 
 import com.dark.string.RedisHashUtil;
 import org.junit.Before;
